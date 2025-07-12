@@ -18,18 +18,15 @@ final class ViewController: UIViewController {
         setupCollectionView()
     }
     
-//    private func setupCollectionView() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = 16
-//        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-//        
-//        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-//        collectionView.register(CustomCell.self, forCellWithReuseIdentifier: WaterfallData.cellName)
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
-//        view.addSubview(collectionView)
-//    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { _ in
+            // Принудительно обновляем layout
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }, completion: nil)
+    }
+    
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
