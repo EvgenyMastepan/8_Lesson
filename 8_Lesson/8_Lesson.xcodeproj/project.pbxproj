@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A2DF30872E226A46002A1F6A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF30862E226A46002A1F6A /* Colors.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A2DF30112E202942002A1F6A /* 8_Lesson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8_Lesson.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2DF30862E226A46002A1F6A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		A2DF30082E202942002A1F6A = {
 			isa = PBXGroup;
 			children = (
+				A2DF30852E226A28002A1F6A /* Resources */,
 				A2DF30132E202942002A1F6A /* 8_Lesson */,
 				A2DF30122E202942002A1F6A /* Products */,
 			);
@@ -56,6 +62,14 @@
 				A2DF30112E202942002A1F6A /* 8_Lesson.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A2DF30852E226A28002A1F6A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2DF30862E226A46002A1F6A /* Colors.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DF30872E226A46002A1F6A /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

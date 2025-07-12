@@ -8,6 +8,7 @@
 import UIKit
 
 final class CustomCell: UICollectionViewCell {
+    private let titul = UILabel()
     private let imageView = UIImageView()
     private let label = UILabel()
     
@@ -21,17 +22,25 @@ final class CustomCell: UICollectionViewCell {
     }
     
     private func setupUI() {
+        titul.font = .systemFont(ofSize: 16, weight: .black)
+        titul.textColor = .waterBlue
+        titul.setContentCompressionResistancePriority(.required, for: .vertical)
+        
         // Настройка изображения
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .systemGray5
+        imageView.backgroundColor = .cellBackground
         
         // Настройка текста
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 10)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         
         // Верстка
-        let stackView = UIStackView(arrangedSubviews: [imageView, label])
+        let stack1 = UIStackView(arrangedSubviews: [imageView, label])
+        stack1.axis = .vertical
+        stack1.spacing = 5
+        let stackView = UIStackView(arrangedSubviews: [titul, stack1])
         stackView.axis = .vertical
         stackView.spacing = 8
         contentView.addSubview(stackView)
@@ -42,21 +51,13 @@ final class CustomCell: UICollectionViewCell {
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            // Фиксированная высота изображения (соотношение сторон сохранится)
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.75)
+
         ])
 
     }
-    func configure(image: UIImage?, text: String) {
+    func configure(title: String, image: UIImage?, text: String) {
+        titul.text = title
         imageView.image = image
         label.text = text
-        
-        // Корректировка соотношения сторон для вертикальных/горизонтальных изображений
-        if let image = image {
-            let aspectRatio = image.size.height / image.size.width
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor,
-                                             multiplier: aspectRatio).isActive = true
-        }
     }
 }
